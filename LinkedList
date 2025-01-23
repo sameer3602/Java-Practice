@@ -1,1 +1,48 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Node{
+    int data;
+    Node next;
+}
+class LinkedList{
+    Node head;
+    public void insert(int data){
+        Node n=new Node();
+        n.data=data;
+        n.next=null;
+        if (head==null){
+            head=n;
+        }
+        else{
+            Node h=head;
+            while(h.next!=null){
+                h=h.next;
+            }
+            h.next=n;
+        }
+    }
+    public void show(){
+        Node n=head;
+        while(n.next!=null){
+            System.out.print(n.data+" ");
+            n=n.next;
+        }
+        System.out.print(n.data+" ");
+    }
+}
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		LinkedList list= new LinkedList();
+		list.insert(40);
+		list.insert(20);
+		list.insert(60);
+		list.insert(30);
+		list.insert(10);
+		list.show();
+	}
+}
 
