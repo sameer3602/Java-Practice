@@ -22,6 +22,7 @@ class LinkedList{
             h.next=n;
         }
     }
+    
     public void show(){
         Node n=head;
         while(n.next!=null){
@@ -29,6 +30,34 @@ class LinkedList{
             n=n.next;
         }
         System.out.print(n.data+" ");
+    }
+    
+    public void insertAtStart(int data){
+        Node newNode=new Node();
+        newNode.data=data;
+        newNode.next=head;
+        head=newNode;
+    }
+    
+    public void insertAtPosition(int index,int data){
+        Node newNode=new Node();
+        newNode.data=data;
+        newNode.next=null;
+        Node curr=head;
+        for(int i=0;i<index-1;i++){
+            curr=curr.next;
+        }
+        Node prev=curr.next;
+        curr.next=newNode;
+        if(prev!=null){
+            newNode.next=prev;
+        }
+    }
+    
+    public void remove(int data){
+        Node curr= head;
+        Node prev=head; 
+            
     }
 }
 class Codechef
@@ -42,7 +71,10 @@ class Codechef
 		list.insert(60);
 		list.insert(30);
 		list.insert(10);
+		list.insertAtStart(100);
+		list.insertAtPosition(4,90);
 		list.show();
+		
+
 	}
 }
-
