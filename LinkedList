@@ -44,6 +44,10 @@ class LinkedList{
         newNode.data=data;
         newNode.next=null;
         Node curr=head;
+        if (index==0){
+            newNode.next=head;
+            return;
+        }
         for(int i=0;i<index-1;i++){
             curr=curr.next;
         }
@@ -54,10 +58,19 @@ class LinkedList{
         }
     }
     
-    public void remove(int data){
+    public void deleteAt(int index){
         Node curr= head;
-        Node prev=head; 
-            
+        Node n=null;
+        if(index==0){
+            head=head.next;
+            System.out.println("Node Deleted at Index:"+index+"="+head.data);
+        }
+        for(int i=0;i<index-1;i++){
+            curr=curr.next;
+        }
+        n=curr.next;
+        curr.next=n.next;
+        System.out.println("Node Deleted at Index:"+index+"="+n.data);
     }
 }
 class Codechef
@@ -71,10 +84,14 @@ class Codechef
 		list.insert(60);
 		list.insert(30);
 		list.insert(10);
+		list.show();
 		list.insertAtStart(100);
 		list.insertAtPosition(4,90);
+		list.insertAtPosition(5,1);
+		System.out.println();
 		list.show();
-		
-
+		System.out.println();
+		list.deleteAt(3);
+		list.show();
 	}
 }
