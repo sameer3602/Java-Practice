@@ -1,0 +1,89 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+    public Node(int data){
+        this.data=data;
+    }
+}
+class BinaryTree
+{
+    Node root;
+    public void insert(int data){
+        root=insertRecursive(root,data);
+    }
+    public Node insertRecursive(Node root,int data){
+        if(root==null){
+            root=new Node(data);
+        }
+        else if(root.data>data){
+            root.left=insertRecursive(root.left,data);
+        }
+        else{
+            root.right=insertRecursive(root.right,data);
+        }
+        return root;
+        
+    }
+                     // PREORDER TRAVERSAL
+    public void preOrder(){
+        System.out.print("PRE ORDER TRAVERSAL::  ");
+        preorderRecursive(root);
+        System.out.println();
+    }
+    public void preorderRecursive(Node root){
+        if (root!=null){
+            System.out.print(root.data+" ");
+            preorderRecursive(root.left);
+            preorderRecursive(root.right);
+        }
+        
+    }
+    
+                    // INORDER TRAVERSAL
+    public void inOrder(){
+        System.out.print("IN ORDER TRAVERSAL::  ");
+        inorderRecursive(root);
+        System.out.println();
+    }
+    public void inorderRecursive(Node root){
+        if (root!=null){
+            inorderRecursive(root.left);
+            System.out.print(root.data+" ");
+            inorderRecursive(root.right);
+        }
+        
+    }
+    
+                    // POSTORDER TRAVERSAL
+    public void postOrder(){
+        System.out.print("POST ORDER TRAVERSAL::  ");
+        postorderRecursive(root);
+        System.out.println();
+    }
+    public void postorderRecursive(Node root){
+        if (root!=null){
+            postorderRecursive(root.left);
+            postorderRecursive(root.right);
+            System.out.print(root.data+" ");
+        }
+        
+    }
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+        BinaryTree Tree=new BinaryTree();
+        Tree.insert(8);
+        Tree.insert(5);
+        Tree.insert(4);
+        Tree.insert(9);
+        Tree.insert(10);
+        Tree.preOrder();
+        Tree.inOrder();
+        Tree.postOrder();
+	}
+}
